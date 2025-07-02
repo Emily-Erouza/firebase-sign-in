@@ -3,7 +3,7 @@ import { Toaster } from '@/components/ui/toaster';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'AuthFlow',
+  title: 'Login Portal',
   description: 'Sign up and login to your account.',
 };
 
