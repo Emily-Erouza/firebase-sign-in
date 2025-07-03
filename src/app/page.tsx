@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from 'react';
 import { LoginForm } from '@/components/login-form';
 import { SignupForm } from '@/components/signup-form';
 import {
@@ -10,8 +13,14 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 export default function Home() {
+  const [activeTab, setActiveTab] = useState('login');
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-4">
+    <main
+      className={`flex min-h-screen flex-col items-center justify-center p-4 transition-colors duration-500 ease-in-out ${
+        activeTab === 'login' ? 'bg-background' : 'bg-accent'
+      }`}
+    >
       <div className="w-full max-w-md">
         <h1 className="text-4xl font-headline font-bold text-center mb-2 text-primary animate-fade-in-down">
           Login Portal
@@ -19,7 +28,12 @@ export default function Home() {
         <p className="text-center text-muted-foreground mb-8">
           Welcome! Please log in or sign up to continue.
         </p>
-        <Tabs defaultValue="login" className="w-full">
+        <Tabs
+          defaultValue="login"
+          className="w-full"
+          onValueChange={setActiveTab}
+          value={activeTab}
+        >
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="login">Login</TabsTrigger>
             <TabsTrigger value="signup">Sign Up</TabsTrigger>
@@ -40,7 +54,9 @@ export default function Home() {
           <TabsContent value="signup">
             <Card className="shadow-lg">
               <CardHeader>
-                <CardTitle className="font-headline text-2xl">Sign Up</CardTitle>
+                <CardTitle className="font-headline text-2xl">
+                  Sign Up
+                </CardTitle>
                 <CardDescription>
                   Create a new account to get started.
                 </CardDescription>
