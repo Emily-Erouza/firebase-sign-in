@@ -77,7 +77,7 @@ export default function Home() {
             activeTab === 'login' ? 'bg-card' : 'bg-accent/20'
           )}
         >
-          <CardHeader className="text-center">
+          <CardHeader>
             <CardTitle>{activeCard.title}</CardTitle>
             <CardDescription>{activeCard.description}</CardDescription>
           </CardHeader>
