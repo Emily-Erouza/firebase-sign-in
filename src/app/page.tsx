@@ -43,10 +43,10 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-4 bg-background">
       <div className="w-full max-w-md">
-        <h1 className="text-4xl font-headline font-bold mb-2 text-primary animate-fade-in-down">
+        <h1 className="text-4xl font-headline font-bold mb-2 text-primary animate-fade-in-down text-center">
           Login Portal
         </h1>
-        <p className="text-muted-foreground mb-8">
+        <p className="text-muted-foreground mb-8 text-center">
           Welcome! Please log in or sign up to continue.
         </p>
 
@@ -77,7 +77,7 @@ export default function Home() {
             activeTab === 'login' ? 'bg-card' : 'bg-accent/20'
           )}
         >
-          <CardHeader>
+          <CardHeader className="text-center">
             <CardTitle>{activeCard.title}</CardTitle>
             <CardDescription>{activeCard.description}</CardDescription>
           </CardHeader>
