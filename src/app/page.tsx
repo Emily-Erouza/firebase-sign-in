@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from 'react';
+import Link from 'next/link';
+import { Linkedin } from 'lucide-react';
 import { LoginForm } from '@/components/login-form';
 import { SignupForm } from '@/components/signup-form';
 import {
@@ -52,7 +54,7 @@ export default function Home() {
         <Card
           className={cn(
             'shadow-lg mt-2 transition-colors duration-500 ease-in-out',
-            activeTab === 'login' ? 'bg-card' : 'bg-accent'
+            activeTab === 'login' ? 'bg-card' : 'bg-accent/20'
           )}
         >
           {activeTab === 'login' ? (
@@ -84,9 +86,31 @@ export default function Home() {
           )}
         </Card>
 
-        <p className="text-center text-sm text-muted-foreground mt-8">
-          Built with a touch of elegance.
-        </p>
+        <footer className="mt-8 text-center text-sm text-muted-foreground">
+          <div className="flex justify-center items-center gap-x-4 gap-y-2 flex-wrap mb-2">
+            <Link href="#" className="hover:text-primary transition-colors">
+              Terms
+            </Link>
+            <Link href="#" className="hover:text-primary transition-colors">
+              Privacy
+            </Link>
+            <Link href="#" className="hover:text-primary transition-colors">
+              Help
+            </Link>
+          </div>
+          <div className="flex justify-center items-center gap-2">
+            <p>© {new Date().getFullYear()} Infinity-tools</p>
+            <Link
+              href="https://www.linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="hover:text-primary transition-colors"
+            >
+              <Linkedin className="h-5 w-5" />
+            </Link>
+          </div>
+        </footer>
       </div>
     </main>
   );
