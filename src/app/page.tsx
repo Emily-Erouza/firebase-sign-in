@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Linkedin } from 'lucide-react';
 import { LoginForm } from '@/components/login-form';
 import { SignupForm } from '@/components/signup-form';
@@ -79,20 +78,8 @@ export default function Home() {
           )}
         >
           <CardHeader>
-            <div className="flex items-start gap-4">
-              <Image
-                src="https://placehold.co/40x40.png"
-                data-ai-hint="logo"
-                alt="company logo"
-                width={40}
-                height={40}
-                className="rounded-md"
-              />
-              <div>
-                <CardTitle>{activeCard.title}</CardTitle>
-                <CardDescription>{activeCard.description}</CardDescription>
-              </div>
-            </div>
+            <CardTitle>{activeCard.title}</CardTitle>
+            <CardDescription>{activeCard.description}</CardDescription>
           </CardHeader>
           <CardContent>{activeCard.form}</CardContent>
         </Card>
@@ -114,11 +101,6 @@ export default function Home() {
             </Link>
           </div>
         </footer>
-      </div>
-      <div className="fixed bottom-4 left-4">
-        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-black text-white">
-          <span className="text-sm font-semibold">h</span>
-        </div>
       </div>
     </main>
   );
