@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Linkedin } from 'lucide-react';
+import { Linkedin, Infinity } from 'lucide-react';
 import { LoginForm } from '@/components/login-form';
 import { SignupForm } from '@/components/signup-form';
 import {
@@ -65,7 +65,10 @@ export default function Home() {
           {activeTab === 'login' ? (
             <>
               <CardHeader>
-                <CardTitle>Login</CardTitle>
+                <CardTitle className="flex items-center gap-2">
+                  <Infinity className="h-6 w-6 text-primary" />
+                  Login
+                </CardTitle>
                 <CardDescription>
                   Enter your credentials to access your account.
                 </CardDescription>
@@ -77,7 +80,8 @@ export default function Home() {
           ) : (
             <>
               <CardHeader>
-                <CardTitle>
+                <CardTitle className="flex items-center gap-2">
+                  <Infinity className="h-6 w-6 text-primary" />
                   Sign Up
                 </CardTitle>
                 <CardDescription>
