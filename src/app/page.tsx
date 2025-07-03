@@ -64,25 +64,25 @@ export default function Home() {
         >
           {activeTab === 'login' ? (
             <>
-              <CardHeader>
+              <CardHeader className="px-4">
                 <CardTitle>Login</CardTitle>
                 <CardDescription>
                   Enter your credentials to access your account.
                 </CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="px-4">
                 <LoginForm />
               </CardContent>
             </>
           ) : (
             <>
-              <CardHeader>
+              <CardHeader className="px-4">
                 <CardTitle>Sign Up</CardTitle>
                 <CardDescription>
                   Create a new account to get started.
                 </CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="px-4">
                 <SignupForm />
               </CardContent>
             </>
