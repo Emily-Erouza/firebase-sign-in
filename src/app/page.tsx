@@ -65,7 +65,7 @@ export default function Home() {
           {activeTab === 'login' ? (
             <>
               <CardHeader>
-                <CardTitle className="font-headline text-2xl">Login</CardTitle>
+                <CardTitle>Login</CardTitle>
                 <CardDescription>
                   Enter your credentials to access your account.
                 </CardDescription>
@@ -77,7 +77,7 @@ export default function Home() {
           ) : (
             <>
               <CardHeader>
-                <CardTitle className="font-headline text-2xl">
+                <CardTitle>
                   Sign Up
                 </CardTitle>
                 <CardDescription>
@@ -93,12 +93,6 @@ export default function Home() {
 
         <footer className="mt-8 text-center text-sm text-muted-foreground">
           <div className="flex justify-center items-center gap-x-4 gap-y-2 flex-wrap mb-2">
-            <Link href="#" className="hover:text-primary transition-colors">
-              Terms
-            </Link>
-            <Link href="#" className="hover:text-primary transition-colors">
-              Privacy
-            </Link>
             <Link href="#" className="hover:text-primary transition-colors">
               Help
             </Link>
