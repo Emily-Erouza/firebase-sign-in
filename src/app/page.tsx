@@ -85,7 +85,7 @@ export default function Home() {
         </Card>
 
         <footer className="mt-8 text-sm text-muted-foreground">
-          <div className="flex justify-start items-center gap-x-4 gap-y-2 flex-wrap">
+          <div className="flex justify-center items-center gap-x-4 gap-y-2 flex-wrap">
             <p>© {year} Infinity-tools</p>
             <Link href="#" className="hover:text-primary transition-colors">
               Help
