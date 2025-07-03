@@ -2,8 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { Linkedin } from 'lucide-react';
+import { Infinity, Linkedin } from 'lucide-react';
 import { LoginForm } from '@/components/login-form';
 import { SignupForm } from '@/components/signup-form';
 import {
@@ -67,7 +66,7 @@ export default function Home() {
             <>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Image src="https://storage.googleapis.com/static.a-shared-server.com/assets/project-assets/6d74b83a-8b83-42e1-a0a3-f09516c141d6.png" alt="Infinity-tools logo" width={24} height={24} />
+                  <Infinity className="h-6 w-6" />
                   Login
                 </CardTitle>
                 <CardDescription>
@@ -82,7 +81,7 @@ export default function Home() {
             <>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Image src="https://storage.googleapis.com/static.a-shared-server.com/assets/project-assets/6d74b83a-8b83-42e1-a0a3-f09516c141d6.png" alt="Infinity-tools logo" width={24} height={24} />
+                  <Infinity className="h-6 w-6" />
                   Sign Up
                 </CardTitle>
                 <CardDescription>
