@@ -2,20 +2,34 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Linkedin, Infinity } from 'lucide-react';
+import Image from 'next/image';
+import { Linkedin } from 'lucide-react';
 import { LoginForm } from '@/components/login-form';
 import { SignupForm } from '@/components/signup-form';
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
+  CardDescription,
   CardTitle,
 } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 
+const cardInfo = {
+  login: {
+    title: 'Login',
+    description: 'Enter your credentials to access your account.',
+    form: <LoginForm />,
+  },
+  signup: {
+    title: 'Sign Up',
+    description: 'Create a new account to get started.',
+    form: <SignupForm />,
+  },
+};
+
 export default function Home() {
-  const [activeTab, setActiveTab] = useState('login');
+  const [activeTab, setActiveTab] = useState<'login' | 'signup'>('login');
   const [year, setYear] = useState<number | null>(null);
 
   useEffect(() => {
@@ -25,13 +39,15 @@ export default function Home() {
   const triggerClasses =
     'inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50';
 
+  const activeCard = cardInfo[activeTab];
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-4 bg-background">
       <div className="w-full max-w-md">
-        <h1 className="text-4xl font-headline font-bold text-center mb-2 text-primary animate-fade-in-down">
+        <h1 className="text-4xl font-headline font-bold mb-2 text-primary animate-fade-in-down">
           Login Portal
         </h1>
-        <p className="text-center text-muted-foreground mb-8">
+        <p className="text-muted-foreground mb-8">
           Welcome! Please log in or sign up to continue.
         </p>
 
@@ -62,41 +78,27 @@ export default function Home() {
             activeTab === 'login' ? 'bg-card' : 'bg-accent/20'
           )}
         >
-          {activeTab === 'login' ? (
-            <>
-              <CardHeader>
-                <div className="flex items-center gap-2">
-                  <Infinity className="h-6 w-6 text-primary" />
-                  <CardTitle>Login</CardTitle>
-                </div>
-                <CardDescription>
-                  Enter your credentials to access your account.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <LoginForm />
-              </CardContent>
-            </>
-          ) : (
-            <>
-              <CardHeader>
-                <div className="flex items-center gap-2">
-                  <Infinity className="h-6 w-6 text-primary" />
-                  <CardTitle>Sign Up</CardTitle>
-                </div>
-                <CardDescription>
-                  Create a new account to get started.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <SignupForm />
-              </CardContent>
-            </>
-          )}
+          <CardHeader>
+            <div className="flex items-start gap-4">
+              <Image
+                src="https://placehold.co/40x40.png"
+                data-ai-hint="logo"
+                alt="company logo"
+                width={40}
+                height={40}
+                className="rounded-md"
+              />
+              <div>
+                <CardTitle>{activeCard.title}</CardTitle>
+                <CardDescription>{activeCard.description}</CardDescription>
+              </div>
+            </div>
+          </CardHeader>
+          <CardContent>{activeCard.form}</CardContent>
         </Card>
 
-        <footer className="mt-8 text-center text-sm text-muted-foreground">
-          <div className="flex justify-center items-center gap-x-4 gap-y-2 flex-wrap">
+        <footer className="mt-8 text-sm text-muted-foreground">
+          <div className="flex justify-start items-center gap-x-4 gap-y-2 flex-wrap">
             <p>© {year} Infinity-tools</p>
             <Link href="#" className="hover:text-primary transition-colors">
               Help
@@ -112,6 +114,11 @@ export default function Home() {
             </Link>
           </div>
         </footer>
+      </div>
+      <div className="fixed bottom-4 left-4">
+        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-black text-white">
+          <span className="text-sm font-semibold">h</span>
+        </div>
       </div>
     </main>
   );
