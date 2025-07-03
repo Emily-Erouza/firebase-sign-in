@@ -10,17 +10,16 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { cn } from '@/lib/utils';
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState('login');
 
+  const triggerClasses =
+    'inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50';
+
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-center p-4 transition-colors duration-500 ease-in-out ${
-        activeTab === 'login' ? 'bg-background' : 'bg-accent'
-      }`}
-    >
+    <main className="flex min-h-screen flex-col items-center justify-center p-4 bg-background">
       <div className="w-full max-w-md">
         <h1 className="text-4xl font-headline font-bold text-center mb-2 text-primary animate-fade-in-down">
           Login Portal
@@ -28,18 +27,36 @@ export default function Home() {
         <p className="text-center text-muted-foreground mb-8">
           Welcome! Please log in or sign up to continue.
         </p>
-        <Tabs
-          defaultValue="login"
-          className="w-full"
-          onValueChange={setActiveTab}
-          value={activeTab}
+
+        <div className="grid w-full grid-cols-2 h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground">
+          <button
+            onClick={() => setActiveTab('login')}
+            className={cn(
+              triggerClasses,
+              activeTab === 'login' && 'bg-background text-foreground shadow-sm'
+            )}
+          >
+            Login
+          </button>
+          <button
+            onClick={() => setActiveTab('signup')}
+            className={cn(
+              triggerClasses,
+              activeTab === 'signup' && 'bg-background text-foreground shadow-sm'
+            )}
+          >
+            Sign Up
+          </button>
+        </div>
+
+        <Card
+          className={cn(
+            'shadow-lg mt-2 transition-colors duration-500 ease-in-out',
+            activeTab === 'login' ? 'bg-card' : 'bg-accent'
+          )}
         >
-          <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="login">Login</TabsTrigger>
-            <TabsTrigger value="signup">Sign Up</TabsTrigger>
-          </TabsList>
-          <TabsContent value="login">
-            <Card className="shadow-lg">
+          {activeTab === 'login' ? (
+            <>
               <CardHeader>
                 <CardTitle className="font-headline text-2xl">Login</CardTitle>
                 <CardDescription>
@@ -49,10 +66,9 @@ export default function Home() {
               <CardContent>
                 <LoginForm />
               </CardContent>
-            </Card>
-          </TabsContent>
-          <TabsContent value="signup">
-            <Card className="shadow-lg">
+            </>
+          ) : (
+            <>
               <CardHeader>
                 <CardTitle className="font-headline text-2xl">
                   Sign Up
@@ -64,9 +80,10 @@ export default function Home() {
               <CardContent>
                 <SignupForm />
               </CardContent>
-            </Card>
-          </TabsContent>
-        </Tabs>
+            </>
+          )}
+        </Card>
+
         <p className="text-center text-sm text-muted-foreground mt-8">
           Built with a touch of elegance.
         </p>
